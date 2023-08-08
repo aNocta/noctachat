@@ -1,0 +1,29 @@
+.messageItem {
+  display: flex;
+  transition: 0.2s;
+  align-items: center;
+  &__menu {
+    display: none;
+  }
+  &:hover {
+    cursor: pointer;
+    background-color: #1f2937;
+  }
+  &__text {
+    background-color: #2d3949;
+  }
+  button {
+    display: none;
+  }
+}
+
+.myMessageItem {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  &__text {
+    background-color: #60a5fa;
+  }
+  &:hover button {
+    display: block;
+  }
+}

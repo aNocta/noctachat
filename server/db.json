@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "admin",
+      "password": "admin",
+      "status": "admin"
+    }
+  ],
+  "chats": [
+    {
+      "id": 0,
+      "name": "main",
+      "messages": [],
+      "users": []
+    }
+  ],
+  "messages": [
+    {
+      "id": 0,
+      "content": "Hello, world!",
+      "author_id": 0
+    }
+  ]
+}
