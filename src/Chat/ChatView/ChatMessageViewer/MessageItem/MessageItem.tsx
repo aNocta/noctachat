@@ -25,7 +25,6 @@ const MessageItem: FC<IMessageItem> = ({
   const activateDeleteButton = () => {
     if (myMessage) {
       deleteButtonAction && deleteButtonAction(true);
-      console.log(message.id);
       dispatch(setCurrentMessageId({ id: message.id }));
     }
   };

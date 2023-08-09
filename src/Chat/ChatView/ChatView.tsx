@@ -5,7 +5,7 @@ import { IMessage } from "../../types/ChatTypes";
 import Window from "../../Window";
 import { IChatListItemProperties } from "../ChatList/ChatListItem";
 import { ChatHeader } from "./ChatHeader";
-import { ChatMessageForm } from "./ChatMessageForm";
+import { ChatMessageForm, ChatSendImage } from "./ChatMessageForm";
 import { ChatMessageViewer } from "./ChatMessageViewer";
 import MessageRemove from "./ChatMessageViewer/MessageRemove";
 
@@ -35,7 +35,7 @@ const ChatView = ({ currentChat }: IChatViewProps): JSX.Element => {
         stateCallback={setPutImageVisibility}
       >
         <Window title="Отправить изображение" closeFunc={setPutImageVisibility}>
-          <p></p>
+          <ChatSendImage />
         </Window>
       </Layout>
       <Layout
