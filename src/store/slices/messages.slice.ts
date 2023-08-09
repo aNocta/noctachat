@@ -28,6 +28,15 @@ const initialState: IMessageState = {
       content: "Hello, world",
       time: "19:30",
     },
+    {
+      id: 3,
+      author_id: 0,
+      chat_id: 1,
+      content:
+        "https://natureconservancy-h.assetsadobe.com/is/image/content/dam/tnc/nature/en/photos/Zugpsitze_mountain.jpg?crop=0%2C214%2C3008%2C1579&wid=1200&hei=630&scl=2.506666666666667",
+      time: "19:30",
+      type: "image",
+    },
   ],
 };
 

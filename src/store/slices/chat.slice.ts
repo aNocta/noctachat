@@ -25,7 +25,7 @@ const initialState: IChatState = {
       title: "JS chat",
       lastMessage: "First message",
       lastMessageTime: "19:30",
-      members: [0, 1],
+      members: [0, 1, 2],
     },
   ],
 };

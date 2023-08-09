@@ -24,7 +24,9 @@ const MessageRemove: FC<IMessageRemoveProps> = ({ setVisibility }) => {
 
   return (
     <div className="min-h-[100px] flex flex-col justify-between m-[1vmin]">
-      <p className="text-white">{message ? message.content : ""}</p>
+      <p className="text-white max-w-[500px]">
+        {message ? message.content : ""}
+      </p>
       <div className="flex">
         <button
           onClick={deleteMessage}

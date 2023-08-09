@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentMessageId } from "../../../../store";
 import { IMessage, IUser } from "../../../../types/ChatTypes";
 import styles from "./MessageItem.module.scss";
+import MessageItemImage from "./MessageItemImage";
+import MessageItemsText from "./MessageItemText";
 
 interface IMessageItem {
   message: IMessage;
@@ -34,29 +36,19 @@ const MessageItem: FC<IMessageItem> = ({
         myMessage ? styles.myMessageItem : ""
       }`}
     >
-      <span
-        className={`flex items-center text-white text-lg px-[1vw] py-[1vh] rounded-2xl shadow-xl min-w-[25%] ${
-          myMessage ? styles.myMessageItem__text : styles.messageItem__text
-        }`}
-      >
-        <img
-          src={currentUser.imgSrc}
-          className="w-[7.5vmin] h-[7.5vmin] rounded-[50%]"
-          alt=""
+      {message.type === "image" ? (
+        <MessageItemImage
+          myMessage={myMessage}
+          currentUser={currentUser}
+          message={message}
         />
-        <div className="flex flex-col ml-[2vmin]">
-          <div className="text-white text-xl font-semibold">
-            {currentUser.name}
-          </div>
-
-          {message.content}
-          <div
-            className={`text-gray-300 flex ${!myMessage ? "justify-end" : ""}`}
-          >
-            {message.time}
-          </div>
-        </div>
-      </span>
+      ) : (
+        <MessageItemsText
+          myMessage={myMessage}
+          currentUser={currentUser}
+          message={message}
+        />
+      )}
       <button
         onClick={activateDeleteButton}
         className="bg-red-400 text-white font-bold p-[1vmin] rounded-xl duration-200 hover:bg-red-500"

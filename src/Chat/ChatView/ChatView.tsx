@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Layout } from "../../Layout";
-import { IMessage } from "../../types/ChatTypes";
+import { IChat, IMessage } from "../../types/ChatTypes";
 import Window from "../../Window";
 import { IChatListItemProperties } from "../ChatList/ChatListItem";
 import { ChatHeader } from "./ChatHeader";
+import { ChatMembers } from "./ChatMembers";
 import { ChatMessageForm, ChatSendImage } from "./ChatMessageForm";
 import { ChatMessageViewer } from "./ChatMessageViewer";
 import MessageRemove from "./ChatMessageViewer/MessageRemove";
 
 interface IChatViewProps {
-  currentChat: IChatListItemProperties;
+  currentChat: IChat;
 }
 
 const ChatView = ({ currentChat }: IChatViewProps): JSX.Element => {
@@ -35,7 +36,7 @@ const ChatView = ({ currentChat }: IChatViewProps): JSX.Element => {
         stateCallback={setPutImageVisibility}
       >
         <Window title="Отправить изображение" closeFunc={setPutImageVisibility}>
-          <ChatSendImage />
+          <ChatSendImage chatId={currentChat.id ? currentChat.id : 0} />
         </Window>
       </Layout>
       <Layout
@@ -43,7 +44,7 @@ const ChatView = ({ currentChat }: IChatViewProps): JSX.Element => {
         stateCallback={setAllMembersVisibility}
       >
         <Window title="Все участники" closeFunc={setAllMembersVisibility}>
-          <p></p>
+          <ChatMembers membersId={currentChat.members} />
         </Window>
       </Layout>
       <Layout

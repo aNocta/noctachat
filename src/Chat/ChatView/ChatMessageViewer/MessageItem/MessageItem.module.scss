@@ -12,6 +12,11 @@
   &__text {
     background-color: #2d3949;
   }
+  .content {
+    max-width: 200px;
+    word-wrap: break-word;
+    text-align: justify;
+  }
   button {
     display: none;
   }

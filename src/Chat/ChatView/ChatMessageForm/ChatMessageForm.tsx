@@ -1,7 +1,5 @@
 import { FC, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addMessage } from "../../../store";
-import { IMessage } from "../../../types/ChatTypes";
+import useSendMessage from "../../../hooks/useSendMessage";
 
 interface IChatMessageFormProps {
   currentChatId: number;
@@ -13,21 +11,13 @@ const ChatMessageForm: FC<IChatMessageFormProps> = ({
   visibilityCallback,
 }) => {
   const [input, setInput] = useState<string>("");
-  const messages = useSelector((state: any) => state.messages.messages);
-  const disp = useDispatch();
-  const sendMessage = () => {
+  const sendMessage = useSendMessage({
+    author_id: 0,
+    chat_id: currentChatId,
+  });
+  const sendMessageForm = () => {
     if (input.trim() != "") {
-      disp(
-        addMessage({
-          message: {
-            id: messages[messages.length - 1].id + 1,
-            author_id: 0,
-            chat_id: currentChatId,
-            content: input,
-            time: "19:30",
-          },
-        })
-      );
+      sendMessage(input);
       setInput("");
     }
   };
@@ -57,7 +47,7 @@ const ChatMessageForm: FC<IChatMessageFormProps> = ({
         onInput={(e) => setInput(e.currentTarget.value)}
       ></input>
       <button
-        onClick={sendMessage}
+        onClick={sendMessageForm}
         className="bg-blue-400 text-white font-bold p-[1vmin] rounded-xl ml-5 duration-200 hover:bg-blue-500"
       >
         Отправить

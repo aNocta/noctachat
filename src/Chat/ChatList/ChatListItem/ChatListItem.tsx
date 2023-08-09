@@ -32,7 +32,10 @@ const ChatListItem = ({
             <span className="text-gray-300 text-xl">{lastMessageTime}</span>
           </div>
           <span className="text-gray-300 text-lg">
-            <b>{currentUser.name}</b>: {lastMessage.content}
+            <b>{currentUser.name}</b>:{" "}
+            {lastMessage.content.length > 20
+              ? `${lastMessage.content.substring(0, 20)}...`
+              : lastMessage.content}
           </span>
         </div>
       </div>
