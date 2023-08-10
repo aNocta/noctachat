@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
 import { IMessage } from "../../../types/ChatTypes";
 import { MessageItem } from "./MessageItem/MessageItem";
 
@@ -11,6 +12,7 @@ const ChatMessageViewer = ({
   messages = [],
   setVisibilityOfLayout,
 }: IChatMessageViewer): JSX.Element => {
+  const currentUserId = useSelector((state: any) => state.currentUser);
   const messagesRef = useRef<null | HTMLDivElement>(null);
   useEffect(() => {
     messagesRef.current?.scrollTo(0, messagesRef.current.scrollHeight);
@@ -23,7 +25,7 @@ const ChatMessageViewer = ({
       >
         {messages.map((message, k) => (
           <MessageItem
-            myMessage={message.author_id == 0}
+            myMessage={message.author_id == currentUserId}
             deleteButtonAction={setVisibilityOfLayout}
             message={message}
             userId={message.author_id}

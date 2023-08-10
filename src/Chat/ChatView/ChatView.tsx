@@ -9,6 +9,7 @@ import { ChatMembers } from "./ChatMembers";
 import { ChatMessageForm, ChatSendImage } from "./ChatMessageForm";
 import { ChatMessageViewer } from "./ChatMessageViewer";
 import MessageRemove from "./ChatMessageViewer/MessageRemove";
+import { MessageSearch } from "./MessageSearch";
 
 interface IChatViewProps {
   currentChat: IChat;
@@ -44,7 +45,10 @@ const ChatView = ({ currentChat }: IChatViewProps): JSX.Element => {
         stateCallback={setAllMembersVisibility}
       >
         <Window title="Все участники" closeFunc={setAllMembersVisibility}>
-          <ChatMembers membersId={currentChat.members} />
+          <ChatMembers
+            chatId={currentChat.id}
+            membersId={currentChat.members}
+          />
         </Window>
       </Layout>
       <Layout
@@ -52,7 +56,7 @@ const ChatView = ({ currentChat }: IChatViewProps): JSX.Element => {
         stateCallback={setSearchFormVisibility}
       >
         <Window title="Найти сообщение" closeFunc={setSearchFormVisibility}>
-          <p></p>
+          <MessageSearch defaultMessages={messages} />
         </Window>
       </Layout>
       <ChatHeader

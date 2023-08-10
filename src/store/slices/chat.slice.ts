@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IChat } from "../../types/ChatTypes";
+import { addMessage } from "./messages.slice";
 
 interface IChatState {
   chats: IChat[];
@@ -27,6 +28,14 @@ const initialState: IChatState = {
       lastMessageTime: "19:30",
       members: [0, 1, 2],
     },
+    {
+      id: 2,
+      creator_id: 0,
+      imgSrc:
+        "https://i0.wp.com/theicom.org/wp-content/uploads/2016/03/js-logo.png?fit=500%2C500&ssl=1&w=640",
+      title: "General chat",
+      members: [0, 1, 2],
+    },
   ],
 };
 
@@ -34,14 +43,32 @@ const chatSlice = createSlice({
   name: "ChatSlice",
   initialState,
   reducers: {
-    addChat: (store, action) => {
-      store.chats.push(action.payload.chat);
+    addChat: (store, { payload }) => {
+      store.chats.push(payload);
     },
     removeChat: (store, action) => {
       store.chats = store.chats.filter((x) => x.id == action.payload.id);
     },
+    kickMember: (store, { payload }) => {
+      const chatId = payload.chatId;
+      const currentChat = store.chats.filter((x: IChat) => x.id === chatId)[0];
+      const memberId = payload.memberId;
+
+      currentChat.members = currentChat.members.filter((x) => x !== memberId);
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(addMessage, (state, { payload }) => {
+      const chatId = payload.message.chat_id;
+      const currentChatMembers = state.chats.filter(
+        (x: IChat) => x.id === chatId
+      )[0].members;
+      const authorId = payload.message.author_id;
+      if (!currentChatMembers.some((val) => val == authorId))
+        currentChatMembers.push(authorId);
+    });
   },
 });
 
-export const { addChat, removeChat } = chatSlice.actions;
+export const { addChat, removeChat, kickMember } = chatSlice.actions;
 export default chatSlice.reducer;

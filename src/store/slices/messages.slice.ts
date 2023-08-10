@@ -45,7 +45,6 @@ const messagesSlice = createSlice({
   initialState,
   reducers: {
     addMessage: (store, action) => {
-      console.log(action.payload.message.id);
       store.messages.push(action.payload.message);
     },
     removeMessage: (store, action) => {

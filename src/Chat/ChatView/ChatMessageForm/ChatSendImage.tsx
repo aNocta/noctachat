@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useSelector } from "react-redux";
 import useSendMessage from "../../../hooks/useSendMessage";
 
 interface IChatSendImageProps {
@@ -6,9 +7,10 @@ interface IChatSendImageProps {
 }
 
 const ChatSendImage: FC<IChatSendImageProps> = ({ chatId }) => {
+  const currentUserId = useSelector((state: any) => state.currentUser);
   const [input, setInput] = useState<string>("");
   const sendMessage = useSendMessage({
-    author_id: 0,
+    author_id: currentUserId,
     chat_id: chatId,
     type: "image",
   });

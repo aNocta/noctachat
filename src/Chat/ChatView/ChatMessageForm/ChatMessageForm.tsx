@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import { useSelector } from "react-redux";
 import useSendMessage from "../../../hooks/useSendMessage";
 
 interface IChatMessageFormProps {
@@ -11,8 +12,9 @@ const ChatMessageForm: FC<IChatMessageFormProps> = ({
   visibilityCallback,
 }) => {
   const [input, setInput] = useState<string>("");
+  const currentUserId = useSelector((state: any) => state.currentUser);
   const sendMessage = useSendMessage({
-    author_id: 0,
+    author_id: currentUserId,
     chat_id: currentChatId,
   });
   const sendMessageForm = () => {

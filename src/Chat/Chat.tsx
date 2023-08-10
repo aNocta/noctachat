@@ -1,12 +1,13 @@
 import { useSelector } from "react-redux/es/exports";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { IChat } from "../types/ChatTypes";
 import ChatCreation from "./ChatCreation";
 import { ChatList } from "./ChatList";
 import ChatNotSelected from "./ChatNotSelected";
 import { ChatView } from "./ChatView";
 
 const Chat = (): JSX.Element => {
-  const chatList = useSelector((state: any) => state.chat.chats);
+  const chatList: IChat[] = useSelector((state: any) => state.chat.chats);
   return (
     <div className="flex flex-col h-[600px] md:flex-row">
       <BrowserRouter>
@@ -14,14 +15,13 @@ const Chat = (): JSX.Element => {
         <Routes>
           <Route path="/" element={<ChatNotSelected />}></Route>
           <Route path="/addChat" element={<ChatCreation />}></Route>
-          <Route
-            path="/chat/0"
-            element={<ChatView currentChat={chatList[0]} />}
-          />
-          <Route
-            path="/chat/1"
-            element={<ChatView currentChat={chatList[1]} />}
-          />
+          {chatList.map((x) => (
+            <Route
+              path={`/chat/${x.id}`}
+              element={<ChatView currentChat={x} />}
+              key={x.id}
+            />
+          ))}
         </Routes>
       </BrowserRouter>
     </div>

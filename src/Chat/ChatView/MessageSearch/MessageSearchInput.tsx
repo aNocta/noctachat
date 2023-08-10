@@ -1,19 +1,16 @@
-import React, { useEffect, useState } from "react";
-import useSearch from "../../../hooks/useSearch";
-import { IChat } from "../../../types/ChatTypes";
+import React, { FC, useState } from "react";
 
-interface IChatProperties {
-  chatList: IChat[];
-  chatListSetter: React.Dispatch<React.SetStateAction<IChat[]>>;
+interface IMessageSearchInput {
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const ChatSearch = ({ chatList, chatListSetter }: IChatProperties) => {
+const MessageSearchInput: FC<IMessageSearchInput> = ({ input, setInput }) => {
   const [drawButton, setDrawButton] = useState<boolean>(false);
-  const { input, setInput } = useSearch(chatList, chatListSetter);
   return (
-    <div className="p-[1vmin] mb-4 flex justify-between duration-200">
+    <div className="flex">
       <input
-        className="w-full rounded-xl p-[1vmin] border-2 duration-200 focus:outline-none focus:border-blue-400"
+        className="w-full rounded-xl p-[1vmin] border-2 duration-200 focus:outline-none focus:border-blue-400 mb-[1vmin]"
         type="text"
         value={input}
         onInput={(e) => {
@@ -39,4 +36,4 @@ const ChatSearch = ({ chatList, chatListSetter }: IChatProperties) => {
   );
 };
 
-export default ChatSearch;
+export { MessageSearchInput };

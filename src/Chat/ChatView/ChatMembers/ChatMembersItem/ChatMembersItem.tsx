@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { useSelector } from "react-redux";
 
 interface IChatMembersItemProps {
   id: number;
@@ -7,10 +8,11 @@ interface IChatMembersItemProps {
 }
 
 const ChatMembersItem: FC<IChatMembersItemProps> = ({ id, name, imgSrc }) => {
+  const currentUserId = useSelector((state: any) => state.currentUser);
   return (
     <div
       className={`flex p-[1vmin] mb-[1vmin] text-white rounded-xl ${
-        id == 0
+        id == currentUserId
           ? "bg-blue-400  hover:bg-blue-500"
           : "bg-gray-800  hover:bg-gray-700"
       }`}
