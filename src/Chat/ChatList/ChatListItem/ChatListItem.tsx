@@ -32,7 +32,10 @@ const ChatListItem = ({
     return (
       <NavLink to={`/chat/${id}`}>
         <div className="flex box-border p-[1vmin] hover:cursor-pointer hover:bg-gray-700 duration-200 chatListItem">
-          <img src={imgSrc} className="w-[15%] h-auto" />
+          <img
+            src={imgSrc}
+            className="w-[7.5vmin] h-[7.5vmin] object-cover rounded-[50%]"
+          />
           <div className="flex flex-col justify-between w-full ml-[5%]">
             <div className="flex justify-between">
               <h4 className="text-white text-xl">{title}</h4>
@@ -57,7 +60,7 @@ const ChatListItem = ({
       <div className="flex box-border p-[1vmin] hover:cursor-pointer hover:bg-gray-700 duration-200 chatListItem">
         <img
           src={imgSrc}
-          className="w-[15%] h-auto object-cover rounded-[50%]"
+          className="w-[7.5vmin] h-[7.5vmin] object-cover rounded-[50%]"
         />
         <div className="flex flex-col justify-between w-full ml-[5%]">
           <div className="flex justify-between">

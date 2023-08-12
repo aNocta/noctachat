@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux/es/exports";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserSwitch from "../PreviewComponents/UserSwitch";
 import { IChat } from "../types/ChatTypes";
 import ChatCreation from "./ChatCreation";
 import { ChatList } from "./ChatList";
@@ -9,7 +10,7 @@ import { ChatView } from "./ChatView";
 const Chat = (): JSX.Element => {
   const chatList: IChat[] = useSelector((state: any) => state.chat.chats);
   return (
-    <div className="flex flex-col h-[600px] md:flex-row">
+    <div className="flex flex-col h-full w-full md:w-fit md:h-[600px] md:flex-row">
       <BrowserRouter>
         <ChatList chatList={chatList} />
         <Routes>
@@ -23,6 +24,7 @@ const Chat = (): JSX.Element => {
             />
           ))}
         </Routes>
+        <UserSwitch />
       </BrowserRouter>
     </div>
   );

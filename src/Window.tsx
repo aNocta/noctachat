@@ -8,7 +8,7 @@ interface IWindowProps {
 
 const Window: FC<IWindowProps> = ({ title, closeFunc, children }) => {
   return (
-    <div className="flex flex-col bg-gray-900 rounded-xl shadow-lg h-auto ml-5 overflow-hidden min-w-[25vw] pb-[2vmin]">
+    <div className="flex w-full h-full flex-col bg-gray-900 rounded-xl shadow-lg md:h-auto overflow-hidden min-w-[25vw] pb-[2vmin] md:ml-5">
       <div className="flex justify-between items-center bg-gray-800 p-[1vmin]">
         <span className="text-white text-xl font-semibold">{title}</span>
         <button

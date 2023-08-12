@@ -18,7 +18,7 @@ const Layout: FC<LayoutProps> = ({ stateCallback, visible, children }) => {
         onClick={() => stateCallback(false)}
         className={styles.background}
       ></div>
-      <div className="z-50">{children}</div>
+      <div className="z-50 h-screen w-full md:h-fit md:w-fit">{children}</div>
     </div>
   );
 };

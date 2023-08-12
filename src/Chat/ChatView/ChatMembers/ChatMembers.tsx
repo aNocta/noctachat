@@ -28,13 +28,13 @@ const ChatMembers: FC<IChatMembersProps> = ({ membersId, chatId }) => {
     );
   };
   return (
-    <div className="min-h-[100px] justify-center flex flex-col m-[1vmin]">
+    <div className="min-h-[100px] md:justify-center flex flex-col m-[1vmin] h-full md:h-fit">
       <div className="bg-gray-800 p-[1vmin] text-white text-lg">
         <span>Добавте участника по ссылке!:</span>
         <br />
         <span className="font-semibold">{window.location.href}</span>
       </div>
-      <div className="flex flex-col max-h-[300px] overflow-y-auto mt-[1vmin]">
+      <div className="flex flex-col h-auto md:max-h-[300px] overflow-y-auto mt-[1vmin]">
         {iam[0] && (
           <ChatMembersItem
             id={iam[0].id}

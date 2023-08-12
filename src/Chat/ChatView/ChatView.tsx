@@ -26,7 +26,7 @@ const ChatView = ({ currentChat }: IChatViewProps): JSX.Element => {
   const [searchFormVisibility, setSearchFormVisibility] =
     useState<boolean>(false);
   return (
-    <div className="flex flex-col bg-gray-900 rounded-xl shadow-lg h-auto ml-5 min-w-[400px] overflow-hidden md:w-[40vw]">
+    <div className="absolute flex flex-col bg-gray-900 shadow-lg min-w-[400px] overflow-hidden  h-full w-full  md:rounded-xl md:h-auto md:static md:ml-5 md:w-[40vw]">
       <Layout visible={layoutVisibility} stateCallback={setLayoutVisibility}>
         <Window title="Удалить сообщение?" closeFunc={setLayoutVisibility}>
           <MessageRemove setVisibility={setLayoutVisibility} />

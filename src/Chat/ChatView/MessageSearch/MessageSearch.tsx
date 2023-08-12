@@ -18,7 +18,7 @@ const MessageSearch: FC<IMessageSearchProps> = ({ defaultMessages }) => {
     setLocalList(defaultMessages);
   }, [defaultMessages]);
   return (
-    <div className="min-h-[200px] justify-center flex flex-col m-[1vmin]">
+    <div className="min-h-[100px] md:justify-center flex flex-col m-[1vmin] h-full md:h-fit">
       <MessageSearchInput input={input} setInput={setInput} />
       <div className="flex flex-col max-h-[300px] overflow-y-auto mt-[1vmin]">
         {localList?.map(

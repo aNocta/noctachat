@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { IChatListItemProperties } from "../../ChatList/ChatListItem";
 import ChatHeaderBar from "./ChatHeaderBar";
 import { ChatHeaderInfo } from "./ChatHeaderInfo";
@@ -20,6 +21,12 @@ const ChatHeader = ({
         chatName={currentChat.title}
         imgSrc={currentChat.imgSrc}
       />
+      <Link
+        to="/"
+        className="bg-blue-400 text-white font-bold p-[1vmin] rounded-xl ml-5 duration-200 hover:bg-blue-500 block md:hidden"
+      >
+        Назад
+      </Link>
       <ChatHeaderBar
         setSearchVisibility={setSearchVisibility}
         setUserListVisibility={setUserListVisibility}

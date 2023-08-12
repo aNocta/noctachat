@@ -17,7 +17,10 @@ const MessageItemImage: FC<IMessageItemContentProps> = ({
         {currentUser.name}
       </div>
       <a href={message.content}>
-        <img src={message.content} className="max-w-[500px] max-h-[500px]" />
+        <img
+          src={message.content}
+          className="w-full max-w-[500px] max-h-[500px]"
+        />
       </a>
       <div className={`text-gray-300 flex ${!myMessage ? "justify-end" : ""}`}>
         {message.time}

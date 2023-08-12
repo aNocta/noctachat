@@ -16,7 +16,7 @@ const ChatList = ({ chatList }: IChatListProperties): JSX.Element => {
   }, [chatList]);
   const currentUserId = useSelector((state: any) => state.currentUser);
   return (
-    <div className="flex flex-col bg-gray-800 rounded-xl shadow-lg h-auto min-w-[400px] md:w-[25vw]">
+    <div className="h-full flex flex-col bg-gray-800 shadow-lg min-w-[400px] md:h-auto md:rounded-xl md:w-[25vw]">
       <ChatSearch chatList={chatList} chatListSetter={setCurrentChatList} />
       <div
         className={`flex flex-col h-full ${
